@@ -7,7 +7,7 @@ const Features = () => {
     <div className="py-12 mt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl font-bold">Why Choose Minimalist?</h2>
+          <h2 className="text-3xl sm:text-5xl font-bold">Why Choose Minimalist Gym?</h2>
           <p className="mt-4 text-lg ">We provide everything you need to achieve your fitness goals</p>
         </div>
 

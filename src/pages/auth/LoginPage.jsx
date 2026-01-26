@@ -20,7 +20,7 @@ const LoginPage = () => {
 
     return (
         <div className="pt-16 flex justify-center">
-            <div className='max-w-80 rounded-xl text-xs sm:text-sm py-4 px-6 sm:px-10 space-y-2 mb-20 max-sm:mb-32 border border-white/10 bg-black/50 shadow-xl shadow-white/10'>
+            <div className='max-w-80 rounded-xl text-xs sm:text-sm py-4 px-6 sm:px-10 space-y-2 mb-20 max-sm:mb-32 border border-white/10 bg-black/50 shadow-xl shadow-white/5'>
                 {
                     state === "Login"
                         ?

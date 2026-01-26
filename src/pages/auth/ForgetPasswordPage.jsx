@@ -76,7 +76,7 @@ const ForgetPasswordPage = () => {
 
 
     return (
-        <div className="max-w-80 mx-auto mt-8 p-6 border border-white/10 bg-white/5 rounded-lg shadow-lg text-sm">
+        <div className="max-w-80 mx-auto mt-8 p-6 border border-white/10 rounded-lg shadow-xl shadow-white/5 text-sm">
             <h2 className="text-2xl font-bold mb-6 text-center">Reset Password</h2>
 
             {!showOTPInput ? (

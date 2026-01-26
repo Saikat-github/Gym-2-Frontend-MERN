@@ -5,7 +5,7 @@ import { galleryImages } from '../../assets/assets'
 const GymGallery = () => {
   return (
     <div className='text-center my-10 space-y-4'>
-      <h1 className="text-2xl">Gym Interior Gallery</h1>
+      <h1 className="text-3xl sm:text-5xl font-bold">Gym Interior Gallery</h1>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 px-6 sm:px-10 py-4 sm:py-10'>
         {
