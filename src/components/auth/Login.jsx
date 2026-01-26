@@ -50,7 +50,7 @@ const Login = ({ setState, navigateTo }) => {
                 <div className="oauth flex flex-col gap-4 items-center">
                     <button
                         onClick={handleGoogleLogin}
-                        className="max-w-60 max-sm:text-xs px-4 py-2 flex gap-2 justify-center items-center rounded-full transition-all duration-300 bg-gray-200 text-sm text-gray-900 hover:opacity-80 cursor-pointer"
+                        className="max-w-60 max-sm:text-xs px-4 py-2 flex gap-2 justify-center items-center rounded-full transition-all duration-300 bg-white/90 text-sm text-black/80 hover:opacity-80 cursor-pointer"
                     >
                         <img className="w-8" src={GoogleLogo} alt="" />
                         Continue With Google
@@ -67,7 +67,7 @@ const Login = ({ setState, navigateTo }) => {
                             type="email"
                             placeholder='Enter email'
                             {...register("email", { required: true })}
-                            className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
+                            className="bg-white/10 rounded px-3 py-2 w-full outline-none"
                         />
                     </div>
                     <div className="space-y-1">
@@ -75,13 +75,13 @@ const Login = ({ setState, navigateTo }) => {
                             type="password"
                             placeholder='Enter password'
                             {...register("password", { required: true })}
-                            className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
+                            className="bg-white/10 rounded px-3 py-2 w-full outline-none"
                         />
                     </div>
 
                     <button
                         disabled={loader}
-                        className={`cursor-pointer hover:opacity-80 text-center w-full bg-orange-600 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 ${loader && "bg-opacity-85"
+                        className={`cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 ${loader && "bg-opacity-85"
                             } flex justify-center items-center`}
                     >
                         {loader ? (
@@ -95,12 +95,12 @@ const Login = ({ setState, navigateTo }) => {
                     <p>Don't have an account?</p>
                     <span
                         onClick={() => setState("Signup")}
-                        className="text-indigo-700 cursor-pointer hover:underline"
+                        className="text-indigo-600/70 cursor-pointer hover:underline"
                     >
                         Click here
                     </span>
                 </div>
-                <p className="text-xs cursor-pointer text-indigo-700 hover:underline" onClick={() => navigate("/forget-password")}>
+                <p className="text-xs cursor-pointer text-indigo-600/70 hover:underline" onClick={() => navigate("/forget-password")}>
                     Forget Password
                 </p>
             </div>

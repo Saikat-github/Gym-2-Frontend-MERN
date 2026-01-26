@@ -6,23 +6,23 @@ import conf from '../../conf/conf';
 
 const Footer = () => {
   return (
-    <footer id='footer' className="bg-slate-950 text-white py-20 mt-32">
+    <footer id='footer' className="bg-black  pb-20 pt-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-around gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <Dumbbell className="h-6 w-6 text-orange-600" />
+              <Dumbbell className="h-6 w-6 text-red-600" />
               <span className="ml-2 text-xl font-bold">Minimalist Gyms</span>
             </div>
             <p className="text-sm">Transform your body, transform your life.</p>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className=" hover:scale-105 transition-all duration-300">
+              <a href="#" className=" hover:scale-105 transition-all duration-300 p-2 bg-white/10 rounded-full">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className=" hover:scale-105 transition-all duration-300">
+              <a href="#" className="hover:scale-105 transition-all duration-300 p-2 bg-white/10 rounded-full">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className=" hover:scale-105 transition-all duration-300">
+              <a href="#" className="hover:scale-105 transition-all duration-300 p-2 bg-white/10 rounded-full">
                 <Twitter className="h-5 w-5" />
               </a>
             </div>

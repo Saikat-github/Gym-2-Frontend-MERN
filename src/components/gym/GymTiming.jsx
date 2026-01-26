@@ -23,10 +23,12 @@ const GymTiming = () => {
   const { savedSchedule } = useContext(AuthContext);
 
   return (
-    <div className="rounded-xl sm:p-6 p-4 shadow-lg max-sm:text-sm mx-auto border border-gray-600">
+    <div className="rounded-xl sm:p-6 p-4 max-sm:text-sm mx-auto border border-white/10">
       <div className="flex flex-col sm:flex-row gap-2 justify-between items-center mb-4">
-        <h2 className="text-lg sm:text-2xl font-semibold flex sm:items-center gap-2">
-          <CalendarClock className="text-orange-600 " />
+        <h2 className="text-lg sm:text-3xl font-semibold flex items-center gap-2">
+          <div className='p-3 bg-white/10 rounded-full'>
+            <CalendarClock className="w-5 h-5" />
+          </div>
           Gym Schedule (24h)
         </h2>
       </div>
@@ -38,7 +40,7 @@ const GymTiming = () => {
             <p className="sm:w-28 font-semibold">{capitalizeFirstLetter(day)}</p>
             {
               Object.keys(savedSchedule).length > 0 && savedSchedule[day]
-                ? <p>{convertTo12Hour(savedSchedule[day].open)} to {convertTo12Hour(savedSchedule[day].close)} {savedSchedule[day].isClosed && <span className='text-red-600'>Closed</span>}</p>
+                ? <p>{convertTo12Hour(savedSchedule[day].open)} to {convertTo12Hour(savedSchedule[day].close)} {savedSchedule[day].isClosed && <span className='text-red-700 bg-red-800/20 py-1 px-3 rounded-full'>Closed</span>}</p>
                 : <p>00:00 to 00:00</p>
             }
           </div>

@@ -11,12 +11,12 @@ const services = [
 const ServicesSection = () => {
   return (
     <section className="py-16 px-4 md:px-20 text-white">
-      <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <h2 className="text-3xl sm:text-5xl font-bold text-center mb-12">Our Services</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
         {services.map((service, idx) => (
           <div
             key={idx}
-            className="relative group h-64 rounded-2xl overflow-hidden shadow-lg border border-gray-800"
+            className="relative group h-64 rounded-2xl overflow-hidden shadow-xl shadow-white/5"
           >
             <div
               className="absolute inset-0 bg-cover bg-center transition-opacity duration-300 opacity-40 group-hover:opacity-100"

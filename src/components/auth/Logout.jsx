@@ -43,9 +43,9 @@ const Logout = ({ isAuthenticated, setMobileMenuOpen }) => {
                     <button
                         disabled={loader}
                         onClick={handleLogout}
-                        className="flex gap-2 items-center px-3 py-2 hover:text-orange-600 cursor-pointer"
+                        className="flex gap-2 items-center px-3 py-2 hover:text-white cursor-pointer"
                     >
-                        <Power className="w-4 text-orange-600" />
+                        <Power className="w-4 text-white/85" />
                         {loader ? <Loader2 className='w-4 animate-spin' /> : "Logout"}
                     </button>
                     :
@@ -53,10 +53,13 @@ const Logout = ({ isAuthenticated, setMobileMenuOpen }) => {
                         to="/login"
                         onClick={() => setMobileMenuOpen(false)}
                         className={({ isActive }) =>
-                            `flex gap-2 items-center px-1 py-1 border-b-2 hover:border-orange-600 text-white mx-auto ${isActive ? "border-orange-600" : "border-transparent"}`
+                            `flex gap-2 items-center px-1 py-1 hover:text-white mx-auto ${isActive ? "text-white" : "text-white/80"}`
                         }
                     >
-                        <LogIn className="w-4 text-orange-600" />
+                        <div className="p-2 bg-white/10 rounded-full flex items-center justify-cente">
+                             <LogIn className="w-4 h-4 text-white/90" />
+                        </div>
+                       
                         Login
                     </NavLink>
 

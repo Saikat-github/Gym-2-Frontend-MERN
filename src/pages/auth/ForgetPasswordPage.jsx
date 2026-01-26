@@ -76,7 +76,7 @@ const ForgetPasswordPage = () => {
 
 
     return (
-        <div className="max-w-80 mx-auto mt-8 p-6 border rounded-lg shadow-lg text-sm">
+        <div className="max-w-80 mx-auto mt-8 p-6 border border-white/10 bg-white/5 rounded-lg shadow-lg text-sm">
             <h2 className="text-2xl font-bold mb-6 text-center">Reset Password</h2>
 
             {!showOTPInput ? (
@@ -86,7 +86,7 @@ const ForgetPasswordPage = () => {
                         <input
                         placeholder='abc@email.com'
                             type="email"
-                            className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
+                            className="bg-white/10 rounded px-3 py-2 w-full outline-none"
                             {...register("email", {
                                 required: "Please enter your email",
                                 pattern: {
@@ -99,11 +99,11 @@ const ForgetPasswordPage = () => {
                     <button
                         disabled={isSubmitting}
                         type="submit"
-                        className="cursor-pointer hover:opacity-80 text-center w-full bg-orange-600 rounded-sm py-1 hover:bg-opacity-85 transition-all duration-300 flex justify-center items-center"
+                        className="cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 flex justify-center items-center"
                     >
                         {isSubmitting ? 'Sending OTP...' : 'Send OTP'}
                     </button>
-                    <p className='text-sm text-center mt-2 text-indigo-700 cursor-pointer font-medium hover:underline' onClick={() => navigate("/login")}>Back to Login</p>
+                    <p className='text-sm text-center mt-2 text-indigo-600/60 cursor-pointer font-medium hover:underline' onClick={() => navigate("/login")}>Back to Login</p>
                 </form>
             ) : (
                 <>

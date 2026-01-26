@@ -55,7 +55,6 @@ const AuthContextProvider = ({ children }) => {
       }
     } catch (error) {
       console.error('Error fetching user profile:', error);
-      toast.error(error.response?.data?.message || 'Failed to fetch profile');
     }
   }, []);
 
@@ -66,12 +65,9 @@ const AuthContextProvider = ({ children }) => {
       const result = await axiosInstance.get("/api/admin/get-plans");
       if (result.data.success) {
         setPlans(result.data.data);
-      } else {
-        toast.error(result.data.message);
       }
     } catch (error) {
-      console.error('Error fetching plans:', error);
-      toast.error(error.response?.data?.message || 'Failed to fetch plans');
+      console.error('Error fetching plans:');
     }
   }, []);
 
@@ -87,8 +83,7 @@ const AuthContextProvider = ({ children }) => {
         setSavedSchedule({});
       }
     } catch (error) {
-      console.error('Error loading schedule:', error);
-      toast.error(error.response?.data?.message || 'Failed to load schedule');
+      console.error('Error loading schedule:');
     }
   }, []);
 
@@ -114,7 +109,7 @@ const AuthContextProvider = ({ children }) => {
       try {
         await Promise.all([getAllPlans(), loadFirstSchedule()]);
       } catch (error) {
-        console.error('Error loading initial data:', error);
+        console.error('Error loading initial data:');
       }
       setLoader(false);
     }

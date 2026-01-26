@@ -47,10 +47,10 @@ const SinglePlan = ({ plan }) => {
 
     return (
         <div
-            className={`bg-gradient-to-b from-gray-900 to-blue-950 p-8 rounded-lg shadow-md relative ${popular === "yes" ? 'border-2 border-orange-500' : ''}`}
+            className={` text-white/80 shadow-2xl p-8 rounded-lg relative ${popular === "yes" ? 'border-2 border-indigo-500' : ''} border border-indigo-700/30 bg-indigo-800/5`}
         >
             {popular === "yes" && (
-                <div className="absolute top-0 right-0 bg-orange-600 text-white px-4 py-1 text-sm font-semibold rounded-bl-lg">
+                <div className="absolute top-0 right-0 bg-indigo-600 px-4 py-1 text-sm font-semibold rounded-bl-lg">
                     Popular
                 </div>
             )}
@@ -75,7 +75,8 @@ const SinglePlan = ({ plan }) => {
             </ul>
             <button
                 onClick={handlePlanSelect}
-                className="w-full py-2 bg-orange-600 text-white rounded-full hover:bg-orange-800 cursor-pointer transition-all duration-200">
+                className="text-white/85 mx-auto px-6 py-2 bg-gradient-to-r from-red-500 to-orange-500
+                hover:from-red-600 hover:to-orange-600  rounded-full cursor-pointer transition-all duration-300">
                 Select Plan
             </button>
         </div>

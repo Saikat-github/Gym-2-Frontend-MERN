@@ -85,7 +85,7 @@ const Signup = ({ setState, navigateTo }) => {
 
     return (
         <div className=''>
-            <p className="text-center my-3 text-2xl font-semibold">Signup</p>
+            <p className="text-center my-3 text-2xl">Signup</p>
             {
                 !showOTPInput
                     ?
@@ -107,7 +107,7 @@ const Signup = ({ setState, navigateTo }) => {
                         <form onSubmit={handleSubmit(handleSendOTP)} className='text-sm space-y-6'>
                             <input
                                 type="email"
-                                className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
+                                className="bg-white/10 rounded px-3 py-2 w-full outline-none"
                                 placeholder="Enter your email to verify"
                                 {...register("email", {
                                     required: "Please enter your email",
@@ -122,7 +122,7 @@ const Signup = ({ setState, navigateTo }) => {
                             )}
                             <button
                                 disabled={loader}
-                                className={`cursor-pointer bg-orange-600 text-center w-full rounded-sm py-2 hover:opacity-80 transition-all duration-300 ${loader && "bg-opacity-85"
+                                className={`cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 ${loader && "bg-opacity-85"
                                     } flex justify-center items-center`}
                             >
                                 {loader ? (
@@ -169,7 +169,7 @@ const Signup = ({ setState, navigateTo }) => {
                             <button
                                 type='submit'
                                 disabled={loader}
-                                className={`cursor-pointer bg-orange-600 text-center w-full rounded py-2 hover:opacity-85 transition-all duration-300 ${loader && "bg-opacity-85"
+                                className={`cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 ${loader && "bg-opacity-85"
                                     } flex justify-center items-center`}
                             >
                                 {loader ? (
@@ -186,7 +186,7 @@ const Signup = ({ setState, navigateTo }) => {
                     </>
 
             }
-            <p className='mt-2 text-indigo-700 cursor-pointer hover:underline' onClick={() => setState("Login")}>Back to Login</p>
+            <p className='mt-2 mr-auto text-indigo-700 cursor-pointer hover:underline' onClick={() => setState("Login")}>Back to Login</p>
         </div>
     )
 }
