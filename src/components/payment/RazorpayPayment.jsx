@@ -80,7 +80,7 @@ const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
 
 
   return (
-    <div className="flex justify-center py-24 px-2">
+    <div className="flex justify-center items-center min-h-[90vh] py-24 px-2">
       <button
         disabled={loader}
         onClick={() => handlePayment()}

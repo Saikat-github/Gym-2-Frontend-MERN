@@ -9,10 +9,10 @@ const Gallery = () => {
 
 
   return (
-    <div className=" py-12">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
-        <h2 className="text-3xl sm:text-5xl font-bold mb-4">State of the Art Equipment</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">Ultra modern equipments that help you reach your goals faster.</p>
+    <div className="py-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-24">
+        <h2 className="text-4xl sm:text-6xl font-bold mb-4">State of the Art Equipment</h2>
+        <p className="text-sm mb-8 max-w-2xl mx-auto">Ultra modern equipments that help you reach your goals faster.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-20 py-10">
         {gymImages.map((image, idx) => (

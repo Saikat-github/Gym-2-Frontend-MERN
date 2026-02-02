@@ -7,7 +7,7 @@ import { Ticket, Download } from "lucide-react";
 export default function DayPass() {
 
   return (
-    <div className="flex flex-col gap-10 items-center justify-center py-24">
+    <div className="flex flex-col gap-10 justify-center items-center min-h-[90vh] py-24">
       <Link
         to="/day-pass/buy-pass"
         className="flex items-center gap-2 px-6 py-2 transition-all duration-300 rounded-full border border-white/20 hover:bg-white/90 hover:text-black"

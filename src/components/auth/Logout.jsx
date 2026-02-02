@@ -57,10 +57,7 @@ const Logout = ({ isAuthenticated, setMobileMenuOpen }) => {
                             `flex gap-2 items-center hover:text-white mx-auto ${isActive ? "text-white" : "text-white/80"}`
                         }
                     >
-                        <div className="p-2 bg-white/20 rounded-full flex items-center justify-cente">
-                            <LogIn className="w-4 h-4 text-white/90" />
-                        </div>
-
+                        <LogIn className="w-4 h-4 text-white/90" />
                         Login
                     </NavLink>
 

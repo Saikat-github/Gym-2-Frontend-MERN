@@ -77,9 +77,7 @@ const Navbar = ({ visible }) => {
                   `flex gap-2 items-center text-sm px-1 py-2 hover:text-white ${isActive ? "text-white" : "text-white/80"} ${!item.show && "hidden"}`
                 }
               >
-                <div className="p-2 bg-white/20 rounded-full flex items-center justify-cente">
                   {item.icon}
-                </div>
                 {item.name}
               </NavLink>
             ))}

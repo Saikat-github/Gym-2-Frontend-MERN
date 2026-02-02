@@ -23,9 +23,9 @@ const GymTiming = () => {
   const { savedSchedule } = useContext(AuthContext);
 
   return (
-    <div className="shadow-xl shadow-white/10 rounded-xl sm:p-6 p-4 max-sm:text-sm mx-auto border border-white/10">
+    <div className="shadow-xl shadow-white/10 rounded-xl sm:p-6 p-4 max-sm:text-sm sm:mx-auto border border-white/10 my-28 mx-2">
       <div className="flex flex-col sm:flex-row gap-2 justify-between items-center mb-4">
-        <h2 className="text-lg sm:text-3xl font-semibold flex items-center gap-2">
+        <h2 className="text-4xl sm:text-6xl font-semibold flex items-center gap-2">
           <div className='p-3 bg-white/10 rounded-full'>
             <CalendarClock className="w-5 h-5" />
           </div>

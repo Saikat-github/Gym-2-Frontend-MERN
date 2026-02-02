@@ -10,7 +10,7 @@ const CallToAction = () => {
 
     const navigate = useNavigate()
     return (
-        <div className="h-96 pt-12 mt-20 bg-cover bg-center bg-no-repeat relative"
+        <div className="h-96 pt-12 mt-40 bg-cover bg-center bg-no-repeat relative"
             style={{ backgroundImage: `url(${assets.otherImage1})` }}>
             <div className="absolute inset-0 bg-black/40 z-0" />
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 my-10">
