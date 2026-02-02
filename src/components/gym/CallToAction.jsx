@@ -14,7 +14,7 @@ const CallToAction = () => {
             style={{ backgroundImage: `url(${assets.otherImage1})` }}>
             <div className="absolute inset-0 bg-black/40 z-0" />
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 my-10">
-                <h2 className="text-3xl sm:text-5xl font-bold mb-8">Ready to Start Your Fitness Journey ?</h2>
+                <h2 className="text-4xl sm:text-6xl font-bold mb-8">Ready to Start Your Fitness Journey ?</h2>
                 <button
                     disabled={user ? true : false}
                     onClick={() => navigate("/login")}

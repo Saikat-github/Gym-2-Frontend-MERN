@@ -53,7 +53,7 @@ const Navbar = ({ visible }) => {
     },
   ]
 
-// shadow-md sticky top-0 z-50 backdrop-blur-md
+  // shadow-md sticky top-0 z-50 backdrop-blur-md
 
   return (
     <nav className={`backdrop-blur-xs sm:backdrop-blur-md fixed top-0 left-0 w-full transition-all duration-300 z-50
@@ -77,7 +77,7 @@ const Navbar = ({ visible }) => {
                   `flex gap-2 items-center text-sm px-1 py-2 hover:text-white ${isActive ? "text-white" : "text-white/80"} ${!item.show && "hidden"}`
                 }
               >
-                  {item.icon}
+                {item.icon}
                 {item.name}
               </NavLink>
             ))}
@@ -101,20 +101,18 @@ const Navbar = ({ visible }) => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden h-screen max-w-screen flex justify-center transition-all duration-300">
-          <div className="px-2 py-2 sm:px-3 flex flex-col gap-6">
+        <div className="md:hidden h-[90vh] max-w-screen flex justify-center transition-all duration-300">
+          <div className="px-2 py-2 sm:px-3 flex flex-col items-center justify-center gap-6">
             {navItems.map((item, idx) => (
               <NavLink
                 key={idx}
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `bg-black/90 p-2 rounded-full flex gap-2 items-center hover:text-white ${isActive ? "text-white" : "text-white/80"} ${!item.show && "hidden"}`
+                  `bg-black/90 px-4 py-2 rounded-full flex gap-4 items-center hover:text-white ${isActive ? "text-white" : "text-white/90"} ${!item.show && "hidden"}`
                 }
               >
-                <div className="p-2 bg-white/20 rounded-full flex items-center justify-cente">
-                  {item.icon}
-                </div>
+                {item.icon}
                 {item.name}
               </NavLink>
             ))}
