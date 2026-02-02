@@ -64,15 +64,15 @@ const DeleteButtons = () => {
 
 
     return (
-        <div className="p-4 mt-60 border border-red-600 rounded">
+        <div className="p-4 mt-60 border border-red-600/50 rounded bg-red-700/15 w-full">
             <h3 className="text-lg font-semibold mb-4 text-red-600 flex items-center gap-2">
                 <AlertTriangle size={20} />
                 Danger Zone
             </h3>
-            <div className="flex flex-col gap-8 justify-start">
+            <div className="flex flex-col gap-8">
                 <button
                     onClick={() => openModal("profile")}
-                    className={`${profileData ? "flex" : "hidden"} px-4 py-2 text-sm border border-red-800 text-white bg-red-700 rounded hover:bg-red-800 transition duration-200 items-center justify-center gap-2 cursor-pointer`}
+                    className={`${profileData ? "flex" : "hidden"} px-4 py-2 text-sm border border-red-800 text-white bg-red-700 rounded hover:bg-red-800 transition duration-200 items-center justify-center gap-2 cursor-pointer mr-auto`}
                 >
                     <UserX size={16} /> Delete Profile
                 </button>
@@ -80,7 +80,7 @@ const DeleteButtons = () => {
 
                 <button
                     onClick={() => openModal("account")}
-                    className="flex px-4 py-2 text-sm border border-red-800 text-white bg-red-700 rounded hover:bg-red-800 transition duration-200 items-center justify-center gap-2 cursor-pointer"
+                    className="flex px-4 py-2 text-sm border border-red-800 text-white bg-red-700 rounded hover:bg-red-800 transition duration-200 items-center justify-center gap-2 cursor-pointer mr-auto"
                 >
                     <Trash2 size={16} /> Delete Account
                 </button>

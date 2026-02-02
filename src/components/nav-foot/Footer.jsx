@@ -11,18 +11,18 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-around gap-8">
           <div>
             <div className="flex items-center mb-4">
-              <Dumbbell className="h-6 w-6 text-red-600" />
+              <Dumbbell className="h-6 w-6" />
               <span className="ml-2 text-xl font-bold">Minimalist Gyms</span>
             </div>
             <p className="text-sm">Transform your body, transform your life.</p>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className=" hover:scale-105 transition-all duration-300 p-2 bg-white/10 rounded-full">
+              <a href="#" className=" hover:scale-105 transition-all duration-300 p-2 bg-pink-800/35 text-pink-600 rounded-full">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:scale-105 transition-all duration-300 p-2 bg-white/10 rounded-full">
+              <a href="#" className="hover:scale-105 transition-all duration-300 p-2 bg-sky-800/35 text-sky-600 rounded-full">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:scale-105 transition-all duration-300 p-2 bg-white/10 rounded-full">
+              <a href="#" className="hover:scale-105 transition-all duration-300 p-2 bg-blue-800/35 text-blue-600 rounded-full">
                 <Twitter className="h-5 w-5" />
               </a>
             </div>

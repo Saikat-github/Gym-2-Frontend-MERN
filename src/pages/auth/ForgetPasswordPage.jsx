@@ -76,102 +76,103 @@ const ForgetPasswordPage = () => {
 
 
     return (
-        <div className="max-w-80 mx-auto mt-8 p-6 border border-white/10 rounded-lg shadow-xl shadow-white/5 text-sm">
-            <h2 className="text-2xl font-bold mb-6 text-center">Reset Password</h2>
+        <div className='py-24'>
+            <div className="max-w-80 mx-auto p-6 border border-white/10 rounded-lg shadow-xl shadow-white/5 text-sm">
+                <h2 className="text-2xl font-bold mb-6 text-center">Reset Password</h2>
 
-            {!showOTPInput ? (
-                <form onSubmit={handleSubmit(handleSendOTP)} className='text-sm space-y-4'>
-                    <div className="mb-4">
-                        <label className="block  mb-2">Email Address</label>
-                        <input
-                        placeholder='abc@email.com'
-                            type="email"
-                            className="bg-white/10 rounded px-3 py-2 w-full outline-none"
-                            {...register("email", {
-                                required: "Please enter your email",
-                                pattern: {
-                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: "Please enter a valid email address",
-                                },
-                            })}
-                        />
-                    </div>
-                    <button
-                        disabled={isSubmitting}
-                        type="submit"
-                        className="cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 flex justify-center items-center"
-                    >
-                        {isSubmitting ? 'Sending OTP...' : 'Send OTP'}
-                    </button>
-                    <p className='text-sm text-center mt-2 text-indigo-600/60 cursor-pointer font-medium hover:underline' onClick={() => navigate("/login")}>Back to Login</p>
-                </form>
-            ) : (
-                <>
-                    <form onSubmit={handleSubmit(handleResetPassword)} className='text-sm space-y-4'>
-                        <div className="">
-                            <label className="block  mb-2">Enter OTP</label>
+                {!showOTPInput ? (
+                    <form onSubmit={handleSubmit(handleSendOTP)} className='text-sm space-y-4'>
+                        <div className="mb-4">
+                            <label className="block  mb-2">Email Address</label>
                             <input
-                                type="number"
-                                {...register('otp', {
-                                    required: "Please enter OTP",
-                                    minLength: { value: 4, message: "OTP must be at least 4 digits" },
-                                    maxLength: { value: 6, message: "OTP cannot exceed 6 digits" },
-                                })
-                                }
-                                className="outline-none w-full p-2 bg-gray-800 rounded"
+                                placeholder='abc@email.com'
+                                type="email"
+                                className="bg-white/10 rounded px-3 py-2 w-full outline-none"
+                                {...register("email", {
+                                    required: "Please enter your email",
+                                    pattern: {
+                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                        message: "Please enter a valid email address",
+                                    },
+                                })}
                             />
-                            {errors.otp && (
-                                <p className="text-red-500 text-xs mt-1">{errors.otp.message}</p>
-                            )}
-                        </div>
-                        <div className="">
-                            <label className="">
-                                New Password
-                                <p className='text-[10px] mt-1 text-slate-200'><span className='text-red-600'>*</span>Password must be at least 8 characters long and contain letters and numbers</p>
-                            </label>
-                            <input
-                                type="password"
-                                {...register("newPassword", {
-                                    required: true,
-                                    minLength: { value: 8, message: "Password must be at least 8 characters" },
-                                })
-                                }
-                                className="bg-gray-800 rounded px-3 py-2 w-full outline-none mt-1"
-                            />
-                            {errors.newPassword && (
-                                <p className="text-red-500 text-xs mt-1">{errors.newPassword.message}</p>
-                            )}
-                        </div>
-                        <div className="">
-                            <label className="block  mb-2">Confirm Password</label>
-                            <input
-                                type="password"
-                                {...register("confirmPassword", {
-                                    required: true,
-                                    minLength: { value: 8, message: "Password must be at least 8 characters" },
-                                })
-                                }
-                                className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
-                            />
-                            {errors.confirmPassword && (
-                                <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>
-                            )}
                         </div>
                         <button
                             disabled={isSubmitting}
                             type="submit"
-                            className="text-center w-full bg-orange-600 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 flex justify-center items-center cursor-pointer hover:opacity-80"
+                            className="cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 flex justify-center items-center"
                         >
-                            {isSubmitting ? 'Resetting Password...' : 'Reset Password'}
+                            {isSubmitting ? 'Sending OTP...' : 'Send OTP'}
                         </button>
+                        <p className='text-sm text-center mt-2 text-indigo-600/60 cursor-pointer font-medium hover:underline' onClick={() => navigate("/login")}>Back to Login</p>
                     </form>
-                    <button
-                        disabled={cooldown > 0}
-                        onClick={() => setShowOTPInput(false)} className='text-indigo-700 hover:underline mt-2'>Resend OTP in {cooldown}s
-                    </button>
-                </>
-            )}
-
+                ) : (
+                    <>
+                        <form onSubmit={handleSubmit(handleResetPassword)} className='text-sm space-y-4'>
+                            <div className="">
+                                <label className="block  mb-2">Enter OTP</label>
+                                <input
+                                    type="number"
+                                    {...register('otp', {
+                                        required: "Please enter OTP",
+                                        minLength: { value: 4, message: "OTP must be at least 4 digits" },
+                                        maxLength: { value: 6, message: "OTP cannot exceed 6 digits" },
+                                    })
+                                    }
+                                    className="outline-none w-full p-2 bg-gray-800 rounded"
+                                />
+                                {errors.otp && (
+                                    <p className="text-red-500 text-xs mt-1">{errors.otp.message}</p>
+                                )}
+                            </div>
+                            <div className="">
+                                <label className="">
+                                    New Password
+                                    <p className='text-[10px] mt-1 text-slate-200'><span className='text-red-600'>*</span>Password must be at least 8 characters long and contain letters and numbers</p>
+                                </label>
+                                <input
+                                    type="password"
+                                    {...register("newPassword", {
+                                        required: true,
+                                        minLength: { value: 8, message: "Password must be at least 8 characters" },
+                                    })
+                                    }
+                                    className="bg-gray-800 rounded px-3 py-2 w-full outline-none mt-1"
+                                />
+                                {errors.newPassword && (
+                                    <p className="text-red-500 text-xs mt-1">{errors.newPassword.message}</p>
+                                )}
+                            </div>
+                            <div className="">
+                                <label className="block  mb-2">Confirm Password</label>
+                                <input
+                                    type="password"
+                                    {...register("confirmPassword", {
+                                        required: true,
+                                        minLength: { value: 8, message: "Password must be at least 8 characters" },
+                                    })
+                                    }
+                                    className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
+                                />
+                                {errors.confirmPassword && (
+                                    <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>
+                                )}
+                            </div>
+                            <button
+                                disabled={isSubmitting}
+                                type="submit"
+                                className="text-center w-full bg-orange-600 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 flex justify-center items-center cursor-pointer hover:opacity-80"
+                            >
+                                {isSubmitting ? 'Resetting Password...' : 'Reset Password'}
+                            </button>
+                        </form>
+                        <button
+                            disabled={cooldown > 0}
+                            onClick={() => setShowOTPInput(false)} className='text-indigo-700 hover:underline mt-2'>Resend OTP in {cooldown}s
+                        </button>
+                    </>
+                )}
+            </div>
         </div>
     )
 }

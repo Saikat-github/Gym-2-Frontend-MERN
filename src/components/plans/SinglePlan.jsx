@@ -47,7 +47,7 @@ const SinglePlan = ({ plan }) => {
 
     return (
         <div
-            className={` text-white/80 shadow-2xl p-8 rounded-lg relative ${popular === "yes" ? 'border-2 border-indigo-500' : ''} border border-indigo-700/30 bg-indigo-800/5`}
+            className={` text-white/80 shadow-2xl p-8 rounded-lg relative ${popular === "yes" ? 'border-2 border-indigo-500' : ''} border border-indigo-600/40 bg-indigo-800/15`}
         >
             {popular === "yes" && (
                 <div className="absolute top-0 right-0 bg-indigo-600 px-4 py-1 text-sm font-semibold rounded-bl-lg">

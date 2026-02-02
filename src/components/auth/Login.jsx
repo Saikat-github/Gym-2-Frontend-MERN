@@ -29,7 +29,6 @@ const Login = ({ setState, navigateTo }) => {
 
             if (response.data.success) {
                 await checkAuthStatus()
-                toast.success(response.data.message);
                 navigate(navigateTo, { replace : true })
             } else {
                 toast.error(response.data.errors ? response.data.errors[0].msg : response.data.message);

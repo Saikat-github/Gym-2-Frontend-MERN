@@ -1,9 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
-import { Link } from 'react-router-dom'
-import { PaymentHistoryCard } from '../../components';
-import { User, CalendarClock, Info, Loader2, Clock, Clipboard } from "lucide-react";
-import { formatDate, capitalizeFirstLetter } from '../../utils/utilFunctions';
+import { PaymentHistoryCard, PaymentSkeleton } from '../../components';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +14,6 @@ const PaymentHistory = () => {
   const [loader, setLoader] = useState(false);
   const [payments, setPayments] = useState([])
   const { backendUrl, profileData } = useContext(AuthContext);
-  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -52,9 +48,8 @@ const PaymentHistory = () => {
 
 
   return (
-    <div className="">
-      <h1 className='text-center text-3xl my-6 font-semibold'>Payment History</h1>
-      <div>
+    <div className="py-24">
+      <h1 className='text-center text-3xl font-semibold'>Payment History</h1>
         <div className="max-w-5xl mx-auto p-4 space-y-6">
           {
             payments?.length === 0 && !loader ? (
@@ -71,9 +66,8 @@ const PaymentHistory = () => {
                 />
               ))
           }
-        </div>
         {
-          loader && <Loader2 className='w-5 animate-spin my-10 mx-auto' />
+          loader && <PaymentSkeleton />
         }
         {hasNextPage && payments.length > 0 && (
           <button

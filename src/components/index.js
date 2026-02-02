@@ -16,6 +16,8 @@ import ConfirmationModal from "./utils/ConfirmationModal";
 import SinglePlan from "./plans/SinglePlan";
 import RazorpayPayment from "./payment/RazorpayPayment";
 import PaymentHistoryCard from "./payment/PaymentHistoryCard";
+import PaymentSkeleton from "./skeleton/PaymentSkeleton";
+import DayPassSkeleton from "./skeleton/DayPassSkeleton";
 
 
 
@@ -40,5 +42,7 @@ export {
     ConfirmationModal, 
     SinglePlan,
     RazorpayPayment,
-    PaymentHistoryCard
+    PaymentHistoryCard,
+    PaymentSkeleton, 
+    DayPassSkeleton
 }

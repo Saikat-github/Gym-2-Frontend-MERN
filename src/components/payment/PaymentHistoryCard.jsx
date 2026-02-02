@@ -58,7 +58,7 @@ const PaymentHistoryCard = ({ membership, name }) => {
   };
 
   return (
-    <div className="rounded bg-slate-900 shadow-lg p-3 sm:p-6 transition duration-300 text-xs sm:text-sm">
+    <div className="rounded p-3 sm:p-6 transition duration-300 text-xs sm:text-sm border border-white/15 bg-[rgba(255,255,255,0.02)]">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-slate-100">Plan: {membership?.planType.toUpperCase()}</h2>
         <button
@@ -70,14 +70,14 @@ const PaymentHistoryCard = ({ membership, name }) => {
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4 text-slate-300">
-        <p><CreditCard className="inline mr-2 text-orange-600" size={16} /><strong>Payment ID:</strong> {membership?.paymentId}</p>
-        <p><CreditCard className="inline mr-2 text-orange-600" size={16} /><strong>Order ID:</strong> {membership?.orderId}</p>
-        <p><CalendarDays className="inline mr-2 text-orange-600" size={16} /><strong>Transaction Date:</strong> {formatDate(membership?.createdAt)}</p>
-        <p><CalendarDays className="inline mr-2 text-orange-600" size={16} /><strong>Expires on:</strong> {formatDate(membership?.planEndDate)}</p>
-        <p><DollarSign className="inline mr-2 text-orange-600" size={16} /><strong>Amount:</strong> ₹{membership?.amount}</p>
-        <p><CreditCard className="inline mr-2 text-orange-600" size={16} /><strong>Payment Method:</strong> {membership?.paymentMethod}</p>
-        <p><Timer className="inline mr-2 text-orange-600" size={16} /><strong>Payment status:</strong> {membership?.paymentStatus}</p>
-        <p><BadgeCheck className="inline mr-2 text-orange-600" size={16} /><strong>Plan status: </strong>
+        <p><CreditCard className="inline mr-2" size={16} /><strong>Payment ID:</strong> {membership?.paymentId}</p>
+        <p><CreditCard className="inline mr-2" size={16} /><strong>Order ID:</strong> {membership?.orderId}</p>
+        <p><CalendarDays className="inline mr-2" size={16} /><strong>Transaction Date:</strong> {formatDate(membership?.createdAt)}</p>
+        <p><CalendarDays className="inline mr-2" size={16} /><strong>Expires on:</strong> {formatDate(membership?.planEndDate)}</p>
+        <p><DollarSign className="inline mr-2" size={16} /><strong>Amount:</strong> ₹{membership?.amount}</p>
+        <p><CreditCard className="inline mr-2" size={16} /><strong>Payment Method:</strong> {membership?.paymentMethod}</p>
+        <p><Timer className="inline mr-2" size={16} /><strong>Payment status:</strong> {membership?.paymentStatus}</p>
+        <p><BadgeCheck className="inline mr-2" size={16} /><strong>Plan status: </strong>
           <span className={`${membership.planStatus === "active" ? 'text-green-600' : 'text-red-600'}`}>
             {membership?.planStatus === "active" ? (
               <>

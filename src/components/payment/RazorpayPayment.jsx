@@ -80,13 +80,13 @@ const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
 
 
   return (
-    <div className="flex justify-center my-28">
+    <div className="flex justify-center py-24 px-2">
       <button
         disabled={loader}
         onClick={() => handlePayment()}
-        className={`py-2 rounded-full bg-orange-700 flex gap-2 px-4 hover:gap-4 transition-all duration-200 ${loader ? "opacity-40 cursor-not-allowed" : "cursor-pointer"}`}
+        className={`border border-white/20 shadow-xl shadow-white/10  my-10 py-2 rounded-full flex items-center gap-2 px-4 hover:gap-4 transition-all duration-200 ${loader ? "opacity-40 cursor-not-allowed" : "cursor-pointer"}`}
       >
-        Pay ₹{dayPassData?.noOfDays ? plan.price * dayPassData.noOfDays : plan.price} securely for {plan.title} plan {loader ? <Loader2 className="animate-spin w-4" /> : <ArrowRight />}
+        Pay ₹{dayPassData?.noOfDays ? plan.price * dayPassData.noOfDays : plan.price} securely for {plan.title} plan {loader ? <Loader2 className="animate-spin w-4" /> : <ArrowRight className="w-5 h-5"/>}
       </button>
     </div>
   );

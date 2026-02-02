@@ -23,10 +23,10 @@ const SingleDayPass = ({ dayPass }) => {
   } = dayPass;
 
   const Field = ({ icon: Icon, label, value }) => (
-    <div className="flex items-center gap-2 border-b border-white/10 py-2 flex-wrap">
-      <Icon className="w-4 h-4 text-orange-600" />
-      <span className="font-medium text-white">{label} : </span>
-      <span className="text-gray-300 truncate">{value ?? '—'}</span>
+    <div className="flex items-center gap-2 py-2 flex-wrap text-sm">
+      <Icon className="w-4 h-4" />
+      <span className="">{label} : </span>
+      <span className=" truncate">{value ?? '—'}</span>
     </div>
   );
 
@@ -88,9 +88,11 @@ const SingleDayPass = ({ dayPass }) => {
 
   return (
     <div className="max-w-md w-full mx-auto max-sm:text-xs">
-      <div ref={pdfRef} className="bg-gray-900/50 p-4 rounded-xl shadow-md backdrop-blur-md text-white">
-        <h2 className="text-xl font-semibold mb-3 text-orange-600 flex items-center">
-          <User className="w-5 h-5 mr-2" />
+      <div ref={pdfRef} className="bg-[rgb(255,255,255,0.02)] border border-white/10 p-4 rounded-xl shadow-md backdrop-blur-md">
+        <h2 className="text-xl font-semibold mb-3  flex items-center gap-2">
+          <div className='p-2 bg-white/10 rounded-full'>
+            <User className="w-5 h-5" />
+          </div>
           {name || 'Unnamed'}
         </h2>
         <Download onClick={handleDownload} className={`w-5 cursor-pointer absolute right-2 top-4 ${paymentId.paymentStatus !== "paid" && "hidden"}`} />

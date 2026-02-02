@@ -11,9 +11,9 @@ const Hero = () => {
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/70 z-0" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 h-full">
+        <div className="flex flex-col items-center h-full justify-center">
+          <div className="md:w-1/2">
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4">
               Transform Your Body, Transform Your Life
             </h1>

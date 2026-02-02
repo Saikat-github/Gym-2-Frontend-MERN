@@ -96,10 +96,10 @@ const AdmissionForm = ({ profileData }) => {
 
 
   return (
-    <div className="min-h-screen sm:p-6 flex flex-col items-center justify-center mb-10">
+    <div className="min-h-screen flex flex-col items-center justify-center mb-10 px-2 sm:px-8 py-24">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" bg-slate-950 p-8 shadow-lg shadow-gray-200 w-full max-w-3xl text-gray-200 px-4 sm:px-8 pb-8 rounded-lg space-y-10 max-sm:text-sm relative"
+        className="p-8 shadow-xl shadow-white/5 border border-white/10 w-full max-w-3xl px-4 sm:px-8 pb-8 rounded-lg space-y-10 max-sm:text-sm relative"
       >
         <h1 className="text-3xl font-semibold text-center my-6">Admission Form</h1>
         {profileData && (

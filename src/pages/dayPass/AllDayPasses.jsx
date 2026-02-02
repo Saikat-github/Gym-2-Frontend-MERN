@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import SingleDayPass from './SingleDayPass';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { DayPassSkeleton } from '../../components';
 
 
 
@@ -24,7 +25,7 @@ const AllDayPasses = () => {
         params: { cursor },
         withCredentials: true
       })
-      
+
       if (res.data.success) {
         setDocuments([...documents, ...res.data.data]);
         setCursor(res.data.nextCursor);
@@ -45,12 +46,12 @@ const AllDayPasses = () => {
 
 
   return (
-    <div className="text-slate-100">
-      <h1 className='text-center text-2xl mb-4 font-semibold'>Day Passes</h1>
-      <div className='text-center'>
-        <Link to={"/day-pass"} className='px-4 py-1 border border-orange-600 text-center rounded-full hover:opacity-75 transition-all duration-300 text-xs'>
+    <div className="py-24">
+      <div className='flex justify-center gap-2 items-center'>
+        <Link to={"/day-pass"} className='px-3 py-1 border border-white text-center rounded-full hover:opacity-75 transition-all duration-300 text-xs my-auto'>
           Back
         </Link>
+        <h1 className='text-2xl font-semibold'>Day Passes</h1>
       </div>
 
       <div>
@@ -68,7 +69,7 @@ const AllDayPasses = () => {
           }
         </div>
         {
-          loader && <Loader2 className='w-5 animate-spin my-10 mx-auto' />
+          loader && <DayPassSkeleton />
         }
         {hasNextPage && documents.length > 0 && (
           <button

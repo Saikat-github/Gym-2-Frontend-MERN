@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'; // optional if using React Router
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen text-white flex flex-col items-center px-4 mt-10">
-      <Ghost className="w-16 h-16 text-zinc-400 mb-6" />
+    <div className="min-h-screen text-white/80 flex flex-col items-center px-4 py-24">
+      <Ghost className="w-16 h-16 my-6" />
       <h1 className="text-4xl font-semibold mb-2">404</h1>
-      <p className="text-lg text-zinc-400 mb-6">Oops! Page not found.</p>
+      <p className="text-lg mb-6">Oops! Page not found.</p>
       <Link
         to="/"
         className="px-4 py-2 rounded-full transition-colors text-sm bg-white/90 text-black/90 hover:opacity-80"

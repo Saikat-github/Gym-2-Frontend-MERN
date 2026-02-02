@@ -14,7 +14,7 @@ import Logout from "../auth/Logout";
 
 
 
-const Navbar = () => {
+const Navbar = ({ visible }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
   // const isAuthenticated = true;
@@ -53,15 +53,17 @@ const Navbar = () => {
     },
   ]
 
-
+// shadow-md sticky top-0 z-50 backdrop-blur-md
 
   return (
-    <nav className="shadow-md sticky top-0 z-50 backdrop-blur-sm ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <nav className={`backdrop-blur-xs sm:backdrop-blur-md fixed top-0 left-0 w-full transition-all duration-300 z-50
+        ${visible ? "opacity-100" : "-translate-y-full opacity-0"}
+      `}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between">
           <NavLink to={"/"} className="flex items-center">
             <Dumbbell className="h-8 w-8 " />
-            <span className="ml-2 text-2xl font-bold text-white">Minimalist Gyms</span>
+            <span className="ml-2 text-2xl font-bold text-white max-sm:hidden">Minimalist Gyms</span>
           </NavLink>
 
           {/* Desktop menu */}
@@ -75,7 +77,7 @@ const Navbar = () => {
                   `flex gap-2 items-center text-sm px-1 py-2 hover:text-white ${isActive ? "text-white" : "text-white/80"} ${!item.show && "hidden"}`
                 }
               >
-                <div className="p-2 bg-white/10 rounded-full flex items-center justify-cente">
+                <div className="p-2 bg-white/20 rounded-full flex items-center justify-cente">
                   {item.icon}
                 </div>
                 {item.name}
@@ -101,18 +103,18 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden h-screen">
-          <div className="px-2 py-2 space-y-4 h-4 sm:px-3 flex flex-col items-center">
+        <div className="md:hidden h-screen max-w-screen flex justify-center transition-all duration-300">
+          <div className="px-2 py-2 sm:px-3 flex flex-col gap-6">
             {navItems.map((item, idx) => (
               <NavLink
                 key={idx}
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `flex gap-2 items-center hover:text-white ${isActive ? "text-white": "text-white/80"} ${!item.show && "hidden"}`
+                  `bg-black/90 p-2 rounded-full flex gap-2 items-center hover:text-white ${isActive ? "text-white" : "text-white/80"} ${!item.show && "hidden"}`
                 }
               >
-                <div className="p-2 bg-white/10 rounded-full flex items-center justify-cente">
+                <div className="p-2 bg-white/20 rounded-full flex items-center justify-cente">
                   {item.icon}
                 </div>
                 {item.name}

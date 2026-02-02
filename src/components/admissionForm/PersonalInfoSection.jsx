@@ -6,13 +6,13 @@ const GENDERS = ["male", "female", "other"];
 const PersonalInfoSection = ({ register, errors }) => (
 
   <div>
-    <h3 className="text-lg text-slate-100 sm:text-xl mb-2 flex items-center gap-2"><User size={20} /> Personal Information</h3>
+    <h3 className="text-lg sm:text-xl mb-2 flex items-center gap-2"><User size={20} /> Personal Information</h3>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* First Name */}
       <div>
         <input
           {...register("name", { required: "Name is required" })}
-          placeholder="Name" className="bg-slate-900 outline-none p-2 rounded w-full" />
+          placeholder="Name" className="bg-white/5 outline-none p-2 rounded w-full" />
         {errors.name && <p className="text-red-600 text-xs sm:text-sm">{errors.name.message}</p>}
       </div>
 
@@ -27,14 +27,14 @@ const PersonalInfoSection = ({ register, errors }) => (
         })} 
         type="tel" 
         placeholder="Phone Number" 
-        className="bg-slate-900 outline-none p-2 rounded w-full" />
+        className="bg-white/5 outline-none p-2 rounded w-full" />
         {errors.phone && <p className="text-red-600 text-xs sm:text-sm">{errors.phone.message}</p>}
       </div>
       
       {/* Gender */}
       <div>
         <select {...register("gender", { required: "Gender is required" })}
-          className="bg-slate-900 outline-none p-2 rounded w-full">
+          className="bg-white/5 outline-none p-2 rounded w-full">
           <option value="">Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -44,7 +44,7 @@ const PersonalInfoSection = ({ register, errors }) => (
       </div>
 
       {/* DOB */}
-      <div className="bg-slate-900 p-2 rounded w-full text-gray-400 flex gap-1">
+      <div className="bg-white/5 p-2 rounded w-full text-gray-400 flex gap-1">
         <label htmlFor="dob" className="w-28">Your DOB</label>
         <input
         id="dob"
@@ -64,7 +64,7 @@ const PersonalInfoSection = ({ register, errors }) => (
           type="text"
           placeholder="Emergency Contact Name"
           {...register("emergencyName", { required: "Required" })}
-          className="bg-slate-900 outline-none p-2 rounded w-full" 
+          className="bg-white/5 outline-none p-2 rounded w-full" 
         />
       </div>
 
@@ -75,7 +75,7 @@ const PersonalInfoSection = ({ register, errors }) => (
           type="text"
           placeholder="Emergency Relation"
           {...register("emergencyRelation", { required: "Required" })}
-          className="bg-slate-900 outline-none p-2 rounded w-full" 
+          className="bg-white/5 outline-none p-2 rounded w-full" 
         />
       </div>
 
@@ -88,7 +88,7 @@ const PersonalInfoSection = ({ register, errors }) => (
             required: "Required",
             pattern: { value: /^[6-9]\d{9}$/, message: "Invalid phone number" },
           })}
-          className="bg-slate-900 outline-none p-2 rounded w-full" 
+          className="bg-white/5 outline-none p-2 rounded w-full" 
         />
         {errors.emergencyPhone && (
           <p className="text-red-400 text-xs mt-1">{errors.emergencyPhone.message}</p>

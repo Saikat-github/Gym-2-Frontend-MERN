@@ -13,7 +13,7 @@ bg-opacity-50 z-50 mx-2">
           ?
           <Loader2 className="animate-spin text-red-600 mx-auto w-6 h-6" />
           :
-          <div className="bg-slate-900 rounded-lg shadow-lg p-6 w-full max-w-sm">
+          <div className="bg-white/10 backdrop-blur-2xl rounded-lg shadow-lg p-6 w-full max-w-sm">
             <div className=" text-slate-200 text-lg">
               <h1>If you delete your {btn}, following things will happen</h1>
               {

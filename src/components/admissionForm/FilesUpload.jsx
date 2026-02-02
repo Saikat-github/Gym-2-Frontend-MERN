@@ -87,10 +87,10 @@ const FilesUpload = ({ profilePreview, aadharPreview, register, setAadharImg, se
 
   return (
     <div>
-      <h1 className="text-lg text-slate-100 sm:text-xl mb-2 flex items-center gap-2">
+      <h1 className="text-lg sm:text-xl mb-2 flex items-center gap-2">
         <Upload />Upload Documents
       </h1>
-      <div className="flex justify-around gap-10 flex-wrap bg-gray-900 p-4 sm:p-8">
+      <div className="flex justify-around gap-10 flex-wrap bg-white/5 p-4 sm:p-8">
 
         {/* Profile Image */}
         <div className="flex gap-4 items-center">
