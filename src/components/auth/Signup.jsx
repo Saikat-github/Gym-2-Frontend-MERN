@@ -48,7 +48,7 @@ const Signup = ({ setState, navigateTo }) => {
         try {
             setLoader(true);
 
-            const response = await axios.post(backendUrl + '/api/user/signup', { ...data, email }, {
+            const response = await axios.post(backendUrl + '/api/user/signup-verifyotp', { ...data, email }, {
                 withCredentials: true,
             });
 
