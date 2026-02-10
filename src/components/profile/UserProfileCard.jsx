@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Phone, Mail, Calendar, Heart, Ruler, Weight,
   ShieldCheck, CreditCard, AlertTriangle, Contact, Edit,
@@ -7,7 +6,6 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import DeleteButtons from './DeleteButtons'
-
 
 
 const UserProfileCard = ({ user }) => {

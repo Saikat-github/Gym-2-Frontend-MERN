@@ -1,35 +1,32 @@
-import React, { useRef } from 'react';
-import { Mail, Phone, Calendar, User, IndianRupee, CheckCircle, XCircle, Clock, Download, Info, IdCard } from 'lucide-react';
+import { Phone, Calendar, User, IndianRupee, CheckCircle, XCircle, Clock, Download, Info, IdCard } from 'lucide-react';
 import { jsPDF } from 'jspdf';
 import { gymLogoBase64 } from '../../assets/assets';
 import { formatDate } from '../../utils/utilFunctions';
 
 
 
+const Field = ({ icon: Icon, label, value }) => (
+  <div className="flex items-center gap-2 py-2 flex-wrap text-sm">
+    <Icon className="w-4 h-4" />
+    <span className="">{label} : </span>
+    <span className=" truncate">{value ?? '—'}</span>
+  </div>
+);
+
+
 const SingleDayPass = ({ dayPass }) => {
-  const pdfRef = useRef();
 
   if (!dayPass) return null;
 
   const {
     passId,
     name,
-    email,
     phone,
     age,
     noOfDays,
     availed,
     paymentId,
   } = dayPass;
-
-  const Field = ({ icon: Icon, label, value }) => (
-    <div className="flex items-center gap-2 py-2 flex-wrap text-sm">
-      <Icon className="w-4 h-4" />
-      <span className="">{label} : </span>
-      <span className=" truncate">{value ?? '—'}</span>
-    </div>
-  );
-
 
   const handleDownload = () => {
     if (paymentId.paymentStatus !== "paid") {
@@ -88,7 +85,7 @@ const SingleDayPass = ({ dayPass }) => {
 
   return (
     <div className="max-w-md w-full mx-auto max-sm:text-xs">
-      <div ref={pdfRef} className="bg-[rgb(255,255,255,0.02)] border border-white/10 p-4 rounded-xl shadow-md backdrop-blur-md">
+      <div className="bg-[rgb(255,255,255,0.02)] border border-white/10 p-4 rounded-xl shadow-md backdrop-blur-md">
         <h2 className="text-xl font-semibold mb-3  flex items-center gap-2">
           <div className='p-2 bg-white/10 rounded-full'>
             <User className="w-5 h-5" />

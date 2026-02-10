@@ -69,7 +69,7 @@ const AuthContextProvider = ({ children }) => {
     } catch (error) {
       console.error('Error fetching plans:');
     }
-  }, []);
+  }, [axiosInstance]);
 
 
 
@@ -85,7 +85,7 @@ const AuthContextProvider = ({ children }) => {
     } catch (error) {
       console.error('Error loading schedule:');
     }
-  }, []);
+  }, [axiosInstance]);
 
 
 
@@ -113,18 +113,19 @@ const AuthContextProvider = ({ children }) => {
       }
       setLoader(false);
     }
-  }, []);
+  }, [axiosInstance]);
 
 
 
   useEffect(() => {
     checkAuthStatus();
-  }, []);
+  }, [checkAuthStatus]);
 
 
 
   // Memoize context value to prevent unnecessary re-renders
   const contextValue = useMemo(() => ({
+    axiosInstance,
     setUser,
     user,
     isAuthenticated: !!user,
@@ -137,6 +138,7 @@ const AuthContextProvider = ({ children }) => {
     getUserProfile,
     savedSchedule,
   }), [
+    axiosInstance,
     user,
     profileData,
     plans,

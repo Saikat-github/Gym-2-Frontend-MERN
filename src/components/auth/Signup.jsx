@@ -1,4 +1,4 @@
-import { useState, useContext, useRef, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -17,25 +17,28 @@ const Signup = ({ setState, navigateTo }) => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    const { backendUrl, checkAuthStatus } = useContext(AuthContext);
+    const { backendUrl, checkAuthStatus, axiosInstance } = useContext(AuthContext);
 
 
 
-    const handleSendOTP = async (data) => {
+    const handleSendOTP = async (e) => {
+        e.preventDefault();
         if (cooldown > 0) return toast.warn(`Please wait ${cooldown}s before resending`);
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return toast.error("Please enter a valid email");
+        }
+
         try {
             setLoader(true);
-            const res = await axios.post(backendUrl + '/api/user/signup-sendotp', { email: data.email });
+            const res = await axiosInstance.post('/api/user/signup-sendotp', { email });
             if (res.data.success) {
-                setEmail(data.email)
-                toast.success(res.data.message);
                 setShowOTPInput(true);
-                setCooldown(30); 
+                setCooldown(30);
+                toast.success(res.data.message);
             } else {
                 toast.error(res.data.message);
             }
         } catch (error) {
-            console.log(error)
             toast.error(error.response?.data || 'An error occurred');
         } finally {
             setLoader(false)
@@ -48,20 +51,17 @@ const Signup = ({ setState, navigateTo }) => {
         try {
             setLoader(true);
 
-            const response = await axios.post(backendUrl + '/api/user/signup-verifyotp', { ...data, email }, {
-                withCredentials: true,
-            });
+            const response = await axiosInstance.post('/api/user/signup-verifyotp', { ...data, email });
 
             if (response.data.success) {
                 await checkAuthStatus();
                 toast.success(response.data.message);
-                navigate(navigateTo, {replace: true});
+                navigate(navigateTo, { replace: true });
             } else {
                 toast.error(response.data.errors ? response.data.errors[0].msg : response.data.message);
             }
         } catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong");
-            console.error("Error:", error);
         } finally {
             setLoader(false);
             reset();
@@ -104,25 +104,18 @@ const Signup = ({ setState, navigateTo }) => {
                             <span className="mx-2">Or</span>
                             <hr className="bg-gray-400 h-0.5 border-0 flex-grow" />
                         </div>
-                        <form onSubmit={handleSubmit(handleSendOTP)} className='text-sm space-y-6'>
+                        <form onSubmit={handleSendOTP} className='flex flex-col gap-4 mt-4'>
                             <input
                                 type="email"
-                                className="bg-white/10 rounded px-3 py-2 w-full outline-none"
-                                placeholder="Enter your email to verify"
-                                {...register("email", {
-                                    required: "Please enter your email",
-                                    pattern: {
-                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                        message: "Please enter a valid email address",
-                                    },
-                                })}
+                                className="bg-gray-800 rounded px-3 py-2 w-full outline-none"
+                                placeholder="Enter email to verify"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
                             />
-                            {errors.email && (
-                                <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-                            )}
                             <button
                                 disabled={loader}
-                                className={`cursor-pointer hover:opacity-80 text-center w-full bg-white/90 text-black/80 rounded-sm py-2 hover:bg-opacity-85 transition-all duration-300 ${loader && "bg-opacity-85"
+                                className={`cursor-pointer bg-orange-600 text-center w-full rounded-sm py-2 hover:opacity-80 transition-all duration-300 ${loader && "bg-opacity-85"
                                     } flex justify-center items-center`}
                             >
                                 {loader ? (
@@ -180,8 +173,8 @@ const Signup = ({ setState, navigateTo }) => {
                             </button>
                         </form>
                         <button
-                            disabled={cooldown > 0}
-                            onClick={() => setShowOTPInput(false)} className='text-indigo-700 hover:underline mt-2'>Resend OTP in {cooldown}s
+                            disabled={cooldown > 0 || loader}
+                            onClick={handleSendOTP} className='text-indigo-700 hover:underline mt-2 cursor-pointer'>Resend OTP in {cooldown}s
                         </button>
                     </>
 

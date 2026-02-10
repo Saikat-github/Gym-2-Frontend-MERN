@@ -10,7 +10,6 @@ const TermsAndConditions = ({register, errors}) => {
                 Please read our <a href="/terms" className="text-blue-400 underline">Terms</a> & <a href="/privacy" className="text-blue-400 underline">Privacy Policy</a> before proceding</p>
             </div>
             {errors.termsAndPolicy && <p className="text-red-400 text-xs">You must agree before submitting</p>}
-
         </div>
     )
 }

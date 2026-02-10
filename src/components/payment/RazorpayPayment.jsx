@@ -8,7 +8,7 @@ import axios from "axios";
 
 
 const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
-  const { getUserProfile, backendUrl } = useContext(AuthContext);
+  const { getUserProfile, backendUrl, axiosInstance } = useContext(AuthContext);
   const [loader, setLoader] = useState(false)
 
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
     try {
       setLoader(true);
       // Step 1: Create order
-      const orderResult = await axios.post(backendUrl + "/api/user/create-order", { planId: plan._id, dayPassData }, { withCredentials: true })
+      const orderResult = await axiosInstance.post("/api/user/create-order", { planId: plan._id, dayPassData })
       const { orderId, key, currency, amount } = orderResult.data;
 
       if (orderResult.data.success) {
@@ -35,7 +35,7 @@ const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
           handler: async (response) => {
             try {
               // Step 3: Verify payment
-              const verificationResult = await axios.post(backendUrl + "/api/user/verify-order", response, { withCredentials: true });
+              const verificationResult = await axiosInstance.post("/api/user/verify-order", response);
 
               if (verificationResult.data.success) {
                 toast.success('Payment successful!');
@@ -66,7 +66,6 @@ const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
         const rzp = new window.Razorpay(options);
         rzp.open();
       } else {
-        console.log(orderResult);
         toast.error(orderResult.data.message);
         setLoader(false)
       }
@@ -86,7 +85,7 @@ const RazorpayPayment = ({ plan, email, name, navigateTo, dayPassData }) => {
         onClick={() => handlePayment()}
         className={`border border-white/20 shadow-xl shadow-white/10  my-10 py-2 rounded-full flex items-center gap-2 px-4 hover:gap-4 transition-all duration-200 ${loader ? "opacity-40 cursor-not-allowed" : "cursor-pointer"}`}
       >
-        Pay ₹{dayPassData?.noOfDays ? plan.price * dayPassData.noOfDays : plan.price} securely for {plan.title} plan {loader ? <Loader2 className="animate-spin w-4" /> : <ArrowRight className="w-5 h-5"/>}
+        Pay ₹{dayPassData?.noOfDays ? (plan.price * dayPassData.noOfDays) : plan.price} securely for {plan.title} plan {loader ? <Loader2 className="animate-spin w-4" /> : <ArrowRight className="w-5 h-5"/>}
       </button>
     </div>
   );

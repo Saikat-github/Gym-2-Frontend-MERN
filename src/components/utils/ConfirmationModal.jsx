@@ -6,15 +6,15 @@ const ConfirmationModal = ({ isOpen, onConfirm, onCancel, loader, btn }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/70
+    <div className="fixed inset-0 flex items-center justify-center backdrop-blur
 bg-opacity-50 z-50 mx-2">
       {
         loader
           ?
           <Loader2 className="animate-spin text-red-600 mx-auto w-6 h-6" />
           :
-          <div className="bg-white/10 backdrop-blur-2xl rounded-lg shadow-lg p-6 w-full max-w-sm">
-            <div className=" text-slate-200 text-lg">
+          <div className="bg-white/90 text-black backdrop-blur-2xl rounded-lg shadow-lg p-6 w-full max-w-sm">
+            <div className="text-lg">
               <h1>If you delete your {btn}, following things will happen</h1>
               {
                 btn === "account"
@@ -38,7 +38,7 @@ bg-opacity-50 z-50 mx-2">
             <div className="mt-6 flex justify-end space-x-4">
               <button
                 onClick={onCancel}
-                className="cursor-pointer px-4 py-2 bg-gray-300 text-slate-800 rounded hover:bg-gray-400"
+                className="cursor-pointer px-4 py-2 rounded bg-black/90 text-white"
               >
                 No
               </button>

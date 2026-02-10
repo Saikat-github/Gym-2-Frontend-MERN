@@ -1,20 +1,19 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { AlertTriangle, UserX, Trash2 } from 'lucide-react'
 import { useState } from 'react';
 import ConfirmationModal from '../utils/ConfirmationModal';
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext';
-import axios from 'axios'
 
 
 
 const DeleteButtons = () => {
     const [loading, setLoading] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Track modal state
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [btn, setBtn] = useState(null);
     const navigate = useNavigate()
-    const { getUserProfile, backendUrl, setUser, profileData } = useContext(AuthContext);
+    const { getUserProfile, setUser, profileData, axiosInstance } = useContext(AuthContext);
 
 
     // Open the modal when delete button is clicked
@@ -34,7 +33,7 @@ const DeleteButtons = () => {
         try {
             setLoading(true)
             if (btn === "account") {
-                const result = await axios.delete(backendUrl + "/api/user/delete-account", { withCredentials: true })
+                const result = await axiosInstance.delete("/api/user/delete-account")
                 if (result.data.success) {
                     setUser(null);
                     toast.success(result.data.message)
@@ -43,8 +42,8 @@ const DeleteButtons = () => {
                     toast.error(result.data.message)
                     navigate("/profile")
                 }
-            } else {
-                const result = await axios.delete(backendUrl + "/api/user/delete-profile", { withCredentials: true })
+            } else if (btn === "profile") {
+                const result = await axiosInstance.delete("/api/user/delete-profile")
                 if (result.data.success) {
                     toast.success(result.data.message)
                 } else {

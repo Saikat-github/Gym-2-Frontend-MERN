@@ -7,20 +7,20 @@ import axios from 'axios'
 
 
 
-const Logout = ({ isAuthenticated, setMobileMenuOpen }) => {
+const Logout = ({ setMobileMenuOpen }) => {
     const [loader, setLoader] = useState(false);
-    const { backendUrl, user, setUser, setProfileData } = useContext(AuthContext);
+    const { user, setUser, setProfileData, axiosInstance } = useContext(AuthContext);
 
 
     const navigate = useNavigate()
     const handleLogout = async () => {
         try {
             setLoader(true);
-            const { data } = await axios.get(backendUrl + "/api/user/logout", { withCredentials: true })
+            const { data } = await axiosInstance.get("/api/user/logout")
             if (data.success) {
                 setUser(null);
                 setProfileData(null)
-                navigate('/login');
+                navigate('/');
             } else {
                 toast.error(data.message);
             }

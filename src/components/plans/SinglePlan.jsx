@@ -50,18 +50,18 @@ const SinglePlan = ({ plan }) => {
             className={` text-white/80 shadow-2xl p-8 rounded-lg relative ${popular === "yes" ? 'border-2 border-indigo-500' : ''} border border-indigo-600/40 bg-indigo-800/15`}
         >
             {popular === "yes" && (
-                <div className="absolute top-0 right-0 bg-indigo-600 px-4 py-1 text-sm font-semibold rounded-bl-lg">
+                <div className="absolute top-0 right-0 bg-indigo-700 px-4 py-1 text-sm font-semibold rounded-bl-lg">
                     Popular
                 </div>
             )}
-            <h3 className="text-2xl sm:text-xl font-bold mb-4">{capitalizeFirstLetter(title)}</h3>
+            <h3 className="text-2xl sm:text-xl font-bold mb-4 capitalize">{title}</h3>
             <p className="text-xl sm:text-3xl font-bold mb-4 flex items-center">
                 <IndianRupee className='' />{price}/{title !== "day-pass" ? duration : "1"} days
                 <span className="text-lg text-gray-500"></span>
             </p>
             {discount
                 &&
-                <p className='flex items-center'>
+                <p className='flex items-center mb-1'>
                     <Tag className='h-5 w-5 text-green-500 mr-2' />
                     {discount}% Off
                 </p>}

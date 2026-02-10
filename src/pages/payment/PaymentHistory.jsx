@@ -3,7 +3,6 @@ import { AuthContext } from '../../context/AuthContext'
 import { PaymentHistoryCard, PaymentSkeleton } from '../../components';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,7 +12,7 @@ const PaymentHistory = () => {
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loader, setLoader] = useState(false);
   const [payments, setPayments] = useState([])
-  const { backendUrl, profileData } = useContext(AuthContext);
+  const { backendUrl, profileData, axiosInstance } = useContext(AuthContext);
 
 
   useEffect(() => {
@@ -25,12 +24,7 @@ const PaymentHistory = () => {
   const fetchPayments = async () => {
     try {
       setLoader(true);
-      const res = await axios.get(backendUrl + "/api/user/get-allpayments",
-        {
-          params: { cursor },
-          withCredentials: true
-        },
-      )
+      const res = await axiosInstance.get("/api/user/get-allpayments", { params: { cursor }})
 
       if (res.data.success) {
         setPayments([...payments, ...res.data.data]);
@@ -73,7 +67,7 @@ const PaymentHistory = () => {
           <button
             disabled={loader}
             onClick={fetchPayments}
-            className={`block mx-auto mt-4 px-4 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition cursor-pointer ${loader && "opacity-40"}`}
+            className={`block mx-auto mt-4 px-4 py-1 bg-white/10 text-white rounded-full shadow-md hover:bg-white/10 border border-white/15 transition cursor-pointer hover:opacity-80`}
           >
             Load More...
           </button>

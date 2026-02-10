@@ -78,9 +78,9 @@ const HealthInfoSection = ({ register, errors, watch }) => {
             {...register("goal")}
             className="bg-white/5 outline-none p-2 rounded w-full"
           >
-            <option value="">Select your fitness goal</option>
+            <option value="" className="bg-black">Select your fitness goal</option>
             {GOALS.map((g) => (
-              <option key={g.value} value={g.value}>
+              <option key={g.value} value={g.value} className="bg-black">
                 {g.name}
               </option>
             ))}

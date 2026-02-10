@@ -17,7 +17,6 @@ import Logout from "../auth/Logout";
 const Navbar = ({ visible }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
-  // const isAuthenticated = true;
 
 
   const navItems = [
@@ -29,8 +28,8 @@ const Navbar = ({ visible }) => {
     },
     {
       name: "Day Pass",
-      path: "/day-pass",
       icon: <Ticket className="w-4 h-4" />,
+      path: "/day-pass",
       show: isAuthenticated
     },
     {

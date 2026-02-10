@@ -1,10 +1,9 @@
-import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Loader2 } from 'lucide-react'
 import { useState, useContext } from 'react';
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import GoogleLogo from "../../assets/google2.svg";
 
@@ -14,7 +13,7 @@ const Login = ({ setState, navigateTo }) => {
     const [loader, setLoader] = useState(false);
     const { register, handleSubmit, reset } = useForm();
     const navigate = useNavigate();
-    const { backendUrl, checkAuthStatus } = useContext(AuthContext);
+    const { backendUrl, checkAuthStatus, axiosInstance } = useContext(AuthContext);
 
     const handleGoogleLogin = () => {
         window.location.href = `${backendUrl}/api/user/google`;
@@ -23,9 +22,7 @@ const Login = ({ setState, navigateTo }) => {
     const onSubmit = async (data) => {
         try {
             setLoader(true);
-            const response = await axios.post(`${backendUrl}/api/user/login`, data, {
-                withCredentials: true,
-            });
+            const response = await axiosInstance.post("/api/user/login", data);
 
             if (response.data.success) {
                 await checkAuthStatus()
@@ -56,9 +53,9 @@ const Login = ({ setState, navigateTo }) => {
                     </button>
                 </div>
                 <div className="my-4 flex gap-4 items-center">
-                    <hr className="bg-gray-200 h-0.5 border-0 flex-grow" />
+                    <hr className="bg-white/80 h-0.5 border-0 flex-grow" />
                     <span className="mx-2">Or</span>
-                    <hr className="bg-gray-200 h-0.5 border-0 flex-grow" />
+                    <hr className="bg-white/80 h-0.5 border-0 flex-grow" />
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
                     <div className="space-y-1">
@@ -94,12 +91,12 @@ const Login = ({ setState, navigateTo }) => {
                     <p>Don't have an account?</p>
                     <span
                         onClick={() => setState("Signup")}
-                        className="text-indigo-600/70 cursor-pointer hover:underline"
+                        className="text-blue-600/70 cursor-pointer hover:underline"
                     >
                         Click here
                     </span>
                 </div>
-                <p className="text-xs cursor-pointer text-indigo-600/70 hover:underline" onClick={() => navigate("/forget-password")}>
+                <p className="text-xs cursor-pointer text-blue-600/70 hover:underline" onClick={() => navigate("/forget-password")}>
                     Forget Password
                 </p>
             </div>

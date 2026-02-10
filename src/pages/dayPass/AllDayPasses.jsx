@@ -15,17 +15,13 @@ const AllDayPasses = () => {
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loader, setLoader] = useState(false);
-  const { user, backendUrl } = useContext(AuthContext);
+  const { axiosInstance } = useContext(AuthContext);
 
 
   const fetchDayPasses = async () => {
     try {
       setLoader(true)
-      const res = await axios.get(backendUrl + "/api/user/get-daypasses", {
-        params: { cursor },
-        withCredentials: true
-      })
-
+      const res = await axiosInstance.get("/api/user/get-daypasses", { params: { cursor }})
       if (res.data.success) {
         setDocuments([...documents, ...res.data.data]);
         setCursor(res.data.nextCursor);

@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo, useCallback, useContext } from "react";
+import { useState, useEffect, useMemo, useCallback, useContext } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { X } from "lucide-react";
 import PersonalInfoSection from "./PersonalInfoSection";
@@ -20,7 +19,7 @@ const AdmissionForm = ({ profileData }) => {
   const [aadharImg, setAadharImg] = useState(null);
   const [loader, setLoader] = useState(false);
 
-  const { user, backendUrl, getUserProfile } = useContext(AuthContext);
+  const { user, getUserProfile, axiosInstance } = useContext(AuthContext);
 
   const { register, handleSubmit, reset, watch, formState: { errors }, setError, clearErrors } = useForm();
 
@@ -77,7 +76,7 @@ const AdmissionForm = ({ profileData }) => {
         ? "/api/user/update-profile"
         : "/api/user/create-profile";
 
-      const res = await axios.post(backendUrl + endpoint, formData, { withCredentials: true });
+      const res = await axiosInstance.post(endpoint, formData);
 
       if (!res.data.success) throw new Error(res.data.message);
       getUserProfile()
@@ -89,7 +88,7 @@ const AdmissionForm = ({ profileData }) => {
     } finally {
       setLoader(false);
     }
-  }, [profileImg, aadharImg, profileData, resetForm]);
+  }, [profileImg, aadharImg, profileData, resetForm, user, axiosInstance, getUserProfile]);
 
 
 
