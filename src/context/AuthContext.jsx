@@ -20,7 +20,7 @@ const AuthContextProvider = ({ children }) => {
     return axios.create({
       baseURL: backendUrl,
       withCredentials: true,
-      timeout: 10000, // 10 second timeout
+      timeout: 20000, // 20 second timeout
     });
   }, [backendUrl]);
 
